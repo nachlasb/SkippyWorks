@@ -9,6 +9,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import SkippyChat from "@/components/SkippyChat";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
+import TrustSection from "@/components/TrustSection";
 import { projects, services, testimonials } from "@/lib/data";
 import { Check, MapPin, Mail, Phone } from "lucide-react";
 import { staggerContainer, fadeInUpVariants } from "@/lib/utils";
@@ -269,6 +270,9 @@ export default function Home() {
       </section>
 
       <CTASection />
+      
+      {/* Trust Section (Additional section) */}
+      <TrustSection />
     </div>
   );
 }

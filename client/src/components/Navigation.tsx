@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Zap, Phone, MessageCircle } from "lucide-react";
-import SkippyChatWidget from "./SkippyChatWidget";
+import { Menu, X, Zap, Phone, MessageCircle, Bot } from "lucide-react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -144,8 +143,23 @@ export default function Navigation() {
         <MessageCircle className="h-6 w-6 text-white" />
       </button>
 
-      {/* Skippy Chat Widget */}
-      {isChatOpen && <SkippyChatWidget onClose={toggleChat} />}
+      {/* Skippy Chat Widget - Will be implemented soon */}
+      {isChatOpen && (
+        <div className="fixed bottom-24 right-6 z-50 w-[350px] bg-card rounded-xl shadow-xl p-6">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center space-x-2">
+              <div className="gradient-bg p-2 rounded-full">
+                <Bot className="h-5 w-5 text-white" />
+              </div>
+              <h3 className="font-bold text-white">Skippy AI</h3>
+            </div>
+            <Button variant="ghost" size="icon" onClick={toggleChat} className="h-8 w-8">
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+          <p className="text-white mb-4">Hello! I'm Skippy, your design AI assistant. How can I help you today?</p>
+        </div>
+      )}
     </>
   );
 }
