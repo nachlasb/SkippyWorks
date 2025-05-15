@@ -1,0 +1,93 @@
+Company name: SkippyWorks 
+layout:
+Nav bar
+CTA+Hero
+featured projects
+our services
+meet skippy
+testimonials
+contact form
+CTA
+footer
+1. Home Page
+    • Header:
+        ◦ Logo (left side): lightning bolt
+        ◦ Company Name (next to logo)
+        ◦ Navigation links (right side): Home | Contact | About | Services | Phone icon (links to company phone number)
+    • Hero Section:
+        ◦ Large background image (inspired by digital design and technology, possibly a subtle abstract or tech-themed visual)
+        ◦ Headline: "Transforming Small Businesses Through Digital Design & Innovation"
+        ◦ Subheading: "Custom solutions to help you grow and succeed."
+        ◦ Call-to-Action (CTA) button: "Get Started" (scrolls down to Services section or links to Contact page)
+    • Portfolio Preview:
+        ◦ A grid showcasing 3-4 featured projects, each with a brief description and a hover effect that enlarges the image.
+        ◦ CTA: "See More Projects" (links to the full portfolio page)
+    • Introducing Skippy, your design-focused AI assistant who is an expert in all areas that SkippyWorks manages. Available as part of the premium monthly subscription for plus users. 24/7 outlet for creative inspiration. Show an animated preview of a sample chat that a user would be having with Skippy related to a design-type question. 
+    • Services Preview:
+        ◦ Short section introducing your main services (e.g., digital design, web development, social media, reputation management, brand building, generative AI tools, tech implementation).
+        ◦ Each service with an icon and a brief description.
+        ◦ CTA: "Learn More" (links to Services page)
+    • Footer:
+        ◦ Contact Info (email, phone)
+        ◦ Social Media links
+        ◦ Copyright notice
+
+
+
+2. About Page
+    • Introduction Section:
+        ◦ A brief company overview 
+        ◦ A professional photo or image representing your team or work.
+    • Mission & Values:
+        ◦ Bullet points or short paragraphs explaining your approach to digital design, innovation, and customer-focused solutions.
+      
+
+3. Services Page
+    • Overview Section:
+        ◦ A short introduction to the services you offer, focusing on the value each brings to small businesses.
+    • Detailed Service Descriptions:
+        ◦ Web Development: Custom websites built for performance, functionality, and design.
+        ◦ Digital Design: Tailored graphics, branding, and user interfaces that captivate and engage.
+        ◦ Social Media Marketing: Strategies that grow your online presence and engage your audience.
+        ◦ Reputation Management: Building and maintaining a positive online reputation for your brand.
+        ◦ Brand Building: Developing strong, memorable brands that connect with your target market.
+        ◦ Generative AI Tools: Cutting-edge tools to enhance your digital experiences.
+        ◦ Tech Implementation: Seamlessly integrating tech solutions to improve efficiency and scalability.
+    • CTA: "Get a Quote" or "Schedule a Consultation"
+
+4. Portfolio Page
+    • Intro Section:
+        ◦ A brief description of the portfolio—highlighting the quality of work and how each project helped clients achieve success.
+    • Grid of Projects:
+        ◦ Display a large grid of projects, each with:
+            ▪ Project title and short description.
+            ▪ A featured image or screenshot.
+            ▪ Hover effect: Image enlarges slightly on hover for a dynamic interaction.
+            ▪ Option to click for more details (links to case studies or full project breakdown).
+
+5. Contact Page
+    • Contact Form:
+        ◦ Name, email, phone number, and message fields.
+        ◦ A simple “Send Message” button.
+    • Company Contact Info:
+        ◦ Email and phone number (make phone number clickable for mobile users).
+    • CTA: "Let's Work Together"
+
+6. Footer
+    • Consistent across all pages:
+        ◦ company name and logo on bottom left
+        ◦ clickable links to each page 
+        ◦ Contact info (email, phone)
+        ◦ Social media links (Facebook, Twitter, Instagram, LinkedIn, etc.)
+        ◦ Copyright and legal links (privacy policy, terms of use)
+
+Design Elements:
+    • Typography: Simple, clean fonts (e.g., sans-serif for modern, easy readability).
+    • Color Scheme: Dark background (black/dark grey) with aqua/teal/purple gradient accents for buttons, links, and hover effects.
+    • Visual Style: Clean lines, high-quality images of projects, and tech-inspired design elements.
+    • Generate favicon
+    • Fast load time and clean HTML/CSS encouraged
+    • plan for SEO when coding
+    • Minimal animations (fade-ins, scroll reveals) may be used subtly
+    • colors should be dark theme, easy to read and navigate. Simple bold fonts. 
+    • All links and dependencies fully clickable, functional, fleshed out and completely built and developed. 
