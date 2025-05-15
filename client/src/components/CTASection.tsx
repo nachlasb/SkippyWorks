@@ -25,15 +25,10 @@ export default function CTASection() {
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Join hundreds of small businesses that have accelerated their growth with our digital design and innovation solutions.
           </p>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-            <Link href="/services">
-              <Button className="gradient-bg hover:opacity-90 rounded-full" size="lg">
-                Explore Services
-              </Button>
-            </Link>
+          <div className="flex justify-center">
             <Link href="/contact">
-              <Button variant="outline" className="rounded-full" size="lg">
-                Contact Us
+              <Button className="gradient-bg hover:opacity-90 rounded-full" size="lg">
+                Get in Touch
               </Button>
             </Link>
           </div>

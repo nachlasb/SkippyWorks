@@ -17,7 +17,7 @@ export default function ServiceCard({ title, description, icon: Icon }: ServiceC
       transition={{ duration: 0.5 }}
     >
       <div className="h-12 w-12 bg-muted rounded-lg flex items-center justify-center mb-6">
-        <Icon className="h-6 w-6 gradient-text" />
+        <Icon className="h-6 w-6 text-white" />
       </div>
       <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
       <p className="text-muted-foreground">{description}</p>

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { truncateText } from "@/lib/utils";
 
 interface ProjectCardProps {
   title: string;
@@ -12,7 +13,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, image, alt, link }: ProjectCardProps) {
   return (
     <motion.div 
-      className="portfolio-card group bg-card rounded-xl overflow-hidden transition-all duration-300"
+      className="portfolio-card group bg-card rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -25,10 +26,10 @@ export default function ProjectCard({ title, description, image, alt, link }: Pr
           className="w-full h-64 object-cover object-center group-hover:scale-105 transition-transform duration-500" 
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-muted-foreground mb-4">{description}</p>
-        <a href={link} className="inline-block text-sm font-medium gradient-text">
+        <p className="text-muted-foreground mb-4 flex-grow">{truncateText(description, 120)}</p>
+        <a href={link} className="inline-block text-sm font-medium gradient-text mt-auto">
           View Project <ArrowRight className="inline-block ml-1 h-4 w-4" />
         </a>
       </div>
