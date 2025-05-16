@@ -122,6 +122,13 @@ export default function Navigation() {
               Portfolio
             </Link>
             <Link 
+              href="/skippy-chat" 
+              className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md font-medium ${isActive('/skippy-chat') ? 'bg-muted' : ''}`}
+              onClick={closeMenu}
+            >
+              <Bot className="h-4 w-4 mr-2 inline" /> Skippy AI
+            </Link>
+            <Link 
               href="/contact" 
               className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md font-medium ${isActive('/contact') ? 'bg-muted' : ''}`}
               onClick={closeMenu}
