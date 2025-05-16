@@ -211,6 +211,11 @@ export default function Home() {
         </div>
       </section>
 
+      <CTASection />
+      
+      {/* Trust Section (Additional section) */}
+      <TrustSection />
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,10 +274,6 @@ export default function Home() {
         </div>
       </section>
 
-      <CTASection />
-      
-      {/* Trust Section (Additional section) */}
-      <TrustSection />
     </div>
   );
 }
