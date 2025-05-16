@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Zap, Phone, MessageCircle, Bot } from "lucide-react";
+import SkippyChatWidget from "./SkippyChatWidget";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,6 +76,9 @@ export default function Navigation() {
               </Link>
               <Link href="/portfolio" className={`nav-item text-gray-300 hover:text-white text-sm font-medium ${isActive('/portfolio') ? 'active' : ''}`}>
                 Portfolio
+              </Link>
+              <Link href="/skippy-chat" className={`nav-item text-gray-300 hover:text-white text-sm font-medium ${isActive('/skippy-chat') ? 'active' : ''}`}>
+                <Bot className="h-4 w-4 mr-1 inline-block" /> Skippy AI
               </Link>
               <Link href="/contact" className={`nav-item text-gray-300 hover:text-white text-sm font-medium ${isActive('/contact') ? 'active' : ''}`}>
                 Contact
