@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: number;
@@ -27,50 +29,15 @@ export default function SkippyChatWidget({ onClose }: SkippyChatWidgetProps) {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const { toast } = useToast();
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Sample responses based on user input
-  const getSkippyResponse = (userMessage: string): string => {
-    const lowerCaseMessage = userMessage.toLowerCase();
-    
-    if (lowerCaseMessage.includes("website") || lowerCaseMessage.includes("web design")) {
-      return "Our web design and development services create responsive, conversion-focused websites tailored to your brand. Would you like me to explain our web development process or show you some example projects?";
-    } 
-    else if (lowerCaseMessage.includes("brand") || lowerCaseMessage.includes("logo")) {
-      return "We offer comprehensive branding services including logo design, identity systems, and brand guidelines. A strong brand can make all the difference for small businesses. What aspects of branding are you most interested in?";
-    }
-    else if (lowerCaseMessage.includes("pricing") || lowerCaseMessage.includes("cost") || lowerCaseMessage.includes("quote")) {
-      return "Our pricing varies based on project scope and requirements. We offer flexible options including project-based quotes and monthly retainers. Let me know what you're looking for, and I can help give you a ballpark estimate.";
-    }
-    else if (lowerCaseMessage.includes("contact") || lowerCaseMessage.includes("speak to") || lowerCaseMessage.includes("talk to")) {
-      return "You can reach our team at hello@skippyworks.com or (555) 123-4567. You can also fill out the contact form on our website. Would you like me to direct you to our contact page?";
-    }
-    else if (lowerCaseMessage.includes("social media") || lowerCaseMessage.includes("marketing")) {
-      return "Our social media marketing strategies help businesses build a strong online presence. We handle content creation, posting schedules, and engagement strategies. Would you like to know more about our social media services?";
-    }
-    else if (lowerCaseMessage.includes("ai") || lowerCaseMessage.includes("artificial intelligence")) {
-      return "We integrate cutting-edge AI tools to enhance your digital experiences and streamline operations. This can include chatbots, content generation, and data analysis. How are you thinking of using AI in your business?";
-    }
-    else if (lowerCaseMessage.includes("portfolio") || lowerCaseMessage.includes("examples") || lowerCaseMessage.includes("work")) {
-      return "We've worked with clients across various industries, from e-commerce to healthcare. You can check out our portfolio for examples of our recent projects. Is there a particular type of project you're interested in seeing?";
-    }
-    else if (lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi") || lowerCaseMessage.includes("hey")) {
-      return "Hello! It's great to connect with you. I'm Skippy, your design assistant at SkippyWorks. How can I help with your digital design or innovation needs today?";
-    }
-    else if (lowerCaseMessage.includes("thank")) {
-      return "You're very welcome! If you have any other questions in the future, don't hesitate to reach out. We're here to help your business succeed.";
-    }
-    else {
-      return "That's an interesting point. At SkippyWorks, we focus on custom solutions tailored to your business needs. Would you like to tell me more about your project so I can provide more specific information?";
-    }
-  };
-
-  const handleSendMessage = () => {
-    if (inputValue.trim() === "") return;
+  const handleSendMessage = async () => {
+    if (inputValue.trim() === "" || isTyping) return;
     
     // Add user message
     const newUserMessage: Message = {
@@ -83,23 +50,50 @@ export default function SkippyChatWidget({ onClose }: SkippyChatWidgetProps) {
     setMessages([...messages, newUserMessage]);
     setInputValue("");
     
-    // Simulate Skippy typing
+    // Start loading indicator for Skippy's response
     setIsTyping(true);
     
-    // Simulate response delay (1-2 seconds)
-    setTimeout(() => {
-      const skippy_response = getSkippyResponse(newUserMessage.text);
+    try {
+      // Send message to API and get response
+      const response = await apiRequest<{ success: boolean; response: string }>({
+        url: "/api/chat",
+        method: "POST",
+        data: { message: inputValue },
+      });
       
-      const newSkippyMessage: Message = {
+      // Add Skippy's response
+      if (response.success && response.response) {
+        const newSkippyMessage: Message = {
+          id: messages.length + 2,
+          sender: "skippy",
+          text: response.response,
+          timestamp: new Date()
+        };
+        
+        setMessages(prevMessages => [...prevMessages, newSkippyMessage]);
+      } else {
+        throw new Error("Invalid response from AI service");
+      }
+    } catch (error) {
+      console.error("Chat API error:", error);
+      toast({
+        title: "Oops!",
+        description: "Skippy is taking a coffee break. Please try again in a moment.",
+        variant: "destructive",
+      });
+      
+      // Add fallback message in case of error
+      const errorMessage: Message = {
         id: messages.length + 2,
         sender: "skippy",
-        text: skippy_response,
+        text: "I'm having trouble connecting to my brain right now. Could you try again in a moment?",
         timestamp: new Date()
       };
       
-      setMessages(prevMessages => [...prevMessages, newSkippyMessage]);
+      setMessages(prevMessages => [...prevMessages, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, Math.random() * 1000 + 1000);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

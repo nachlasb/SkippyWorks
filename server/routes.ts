@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { handleChatRequest } from "./ai";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes
@@ -43,6 +44,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
     }
+  });
+
+  // SkippyAI Chat API route
+  app.post("/api/chat", handleChatRequest);
+
+  // Health check route
+  app.get("/api/health", (req, res) => {
+    res.status(200).json({
+      status: "ok",
+      message: "SkippyWorks API is running"
+    });
   });
 
   const httpServer = createServer(app);
